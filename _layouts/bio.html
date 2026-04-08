@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="{{ page.locale | default: 'en' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="{{ page.description }}">
+  <meta name="author" content="{{ page.author }}">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:locale" content="{{ page.locale | default: 'en' }}">
+  <meta property="og:description" content="{{ page.description }}">
+  <meta property="og:site_name" content="{{ page.title }}">
+  <meta property="twitter:title" content="{{ site.title }}" />
+
+  <link rel="shortcut icon" href="{{ site.baseurl }}{{ site.favicon }}" />
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/reset.css" />
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <title>{{ page.title }}</title>
+</head>
+<body>
+  <main>
+
+    <session class="bio">
+      <img src="{{ site.baseurl }}{{ page.profile }}" alt="profile" />
+      <h1>{{ page.name }}</h1>
+      <p>{{ page.description }}</p>
+    </session>
+
+    <session class="links">
+      {% for link in page.links %}
+        <a href="{{ link.url }}" target="_blank" class="link" title="{{ link.title }}">
+          <i class="{{ link.icon }}"></i> {{ link.title }}
+        </a>
+      {% endfor %}
+    </session>
+
+    <session class="socials">
+      {% for social in page.socials %}
+        <a href="{{ social.url }}" title="{{ social.title }}" target="_blank" class="social" alt="{{ social.title }}">
+          <i class="{{ social.icon }}"></i>
+        </a>
+      {% endfor %}
+    </session>
+
+    <footer>
+      {% if page.footer %}
+        <p>{{ page.footer }}</p>
+      {% endif %}
+
+      {% if page.copyright %}
+        <p>{{ page.copyright }}</p>
+      {% endif %}
+    </footer>
+
+  </main>
+  
+</body>
+</html>
